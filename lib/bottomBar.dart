@@ -14,16 +14,16 @@ class _BottomBarState extends State<BottomBar> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        IconButton(icon: Image.asset("assets/images/Bottombar_first.png"),onPressed: () {},),
-        IconButton(icon: Image.asset("assets/images/Bottombar_second.png"),onPressed: () {},),
-        IconButton(icon: Image.asset("assets/images/Bottombar_center.png"),onPressed: () {
+        IconButton(icon: Image.asset("assets/images/Bottombar/Bottombar_first.png"),onPressed: () {},),
+        IconButton(icon: Image.asset("assets/images/Bottombar/Bottombar_second.png"),onPressed: () {},),
+        IconButton(icon: Image.asset("assets/images/Bottombar/Bottombar_center.png"),onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(
                   builder: (context) => RegisterMeeting()));
           },
         ),
-        IconButton(icon: Image.asset("assets/images/Bottombar_third.png"),onPressed: () {},),
-        IconButton(icon: Image.asset("assets/images/Bottombar_fourth.png"),onPressed: () {},),
+        IconButton(icon: Image.asset("assets/images/Bottombar/Bottombar_third.png"),onPressed: () {},),
+        IconButton(icon: Image.asset("assets/images/Bottombar/Bottombar_fourth.png"),onPressed: () {},),
       ],
     );
   }
