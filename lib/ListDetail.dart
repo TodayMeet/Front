@@ -326,7 +326,7 @@ class _ListDetailState extends State<ListDetail> {
             ), //구분선
 
             const SizedBox(height: 16,),
-            const Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: 24,),
@@ -352,7 +352,7 @@ class _ListDetailState extends State<ListDetail> {
                         backgroundColor: const Color(0xffF0F1F5),
                         elevation: 0,
                       ),
-                      child: const Row(
+                      child: Row(
                         children: [
                           StringText('전체 댓글 보기', 14, 'PretendardBold', 0xffA8A8B2),
                         ],

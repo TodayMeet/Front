@@ -51,7 +51,7 @@ class mainListView extends StatelessWidget { //건수 리스트 게시판 뷰
                 ],
               ), //카테고리, 마감시간
               const SizedBox(height: 12,),
-              const Row(
+              Row(
                 children: [
                   SizedBox(width: 20,),
                   Text('용산동에서 치맥하실 분~~!!', //건수 제목
@@ -85,7 +85,7 @@ class mainListView extends StatelessWidget { //건수 리스트 게시판 뷰
                 ],
               ), //사용자 사진, 이름 -> 사용자 프로필 이동
               const SizedBox(height: 10,),
-              const Row(
+              Row(
                 children: [
                   SizedBox(width: 18,),
                   Text('용산동 ',
