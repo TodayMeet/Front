@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "test1",
     "short_name": "test1",
+=======
+    "name": "front",
+    "short_name": "front",
+>>>>>>> 39b67fa67318d3223cebeab55ffe09d3adcd4173
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

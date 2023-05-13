@@ -44,7 +44,11 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+<<<<<<< HEAD
         applicationId "com.example.test1"
+=======
+        applicationId "com.example.front"
+>>>>>>> 39b67fa67318d3223cebeab55ffe09d3adcd4173
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion

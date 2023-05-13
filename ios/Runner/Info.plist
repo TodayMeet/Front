@@ -5,7 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
+<<<<<<< HEAD
 	<string>Test1</string>
+=======
+	<string>Front</string>
+>>>>>>> 39b67fa67318d3223cebeab55ffe09d3adcd4173
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +17,11 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
+<<<<<<< HEAD
 	<string>test1</string>
+=======
+	<string>front</string>
+>>>>>>> 39b67fa67318d3223cebeab55ffe09d3adcd4173
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
