@@ -1,30 +1,35 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:developer' as dev;
 
-class Location extends StatefulWidget {
-  const Location({Key? key}) : super(key: key);
+class LocationPage extends StatefulWidget {
+  const LocationPage({Key? key}) : super(key: key);
 
   @override
-  State<Location> createState() => _LocationState();
+  State<LocationPage> createState() => _LocationState();
 }
 
-class _LocationState extends State<Location> {
+class _LocationState extends State<LocationPage> {
   TextEditingController controller = TextEditingController();
-  List<dynamic> list = [];
+
+  String inputString = "";
+  List addressList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
-        title: Text('위치 설정',
-            style: TextStyle(color: Colors.black)),
+        title: const Text('위치 설정',
+            style: TextStyle(color: Colors.black,
+                fontFamily: 'PretendardBold')),
         backgroundColor: Colors.white,
         elevation: 1,
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black87),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            color: Colors.black,
+            icon: const Icon(Icons.arrow_back_ios)),
       ),
       body: Container(
         margin: EdgeInsets.all(20),
@@ -32,39 +37,34 @@ class _LocationState extends State<Location> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('검색하고자 하는 지역의 동 이름을 입력해 주세요.'),
+            const Text('검색하고자 하는 지역의 동 이름을 입력해 주세요.',
+              style: TextStyle(fontFamily: "PretendardBold", color: Color(0xFF2F3036)),
+            ),
             Row(
               children: [
                 Expanded(
-                    child: TextField(controller: controller)
+                    child: TextField(
+                      onChanged: (text){
+                        setState(() {
+                          inputString = text;
+                        });
+                      },
+                        maxLines: 1,
+                        decoration: const InputDecoration(
+                          labelText: "예)용산동, 이곡동",
+                          filled: true,
+                          fillColor: Color(0xFFF5F6FA),
+                          floatingLabelStyle: TextStyle(
+                              fontFamily: "PretendardRegular", fontSize: 5, color: Color(0xFFC8C8CB)),
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                        ),
+                        controller: controller)
                 ),
                 ElevatedButton(
                     onPressed: (){
-                      Map<String, String> params = {
-                        'confmKey': 'devU01TX0FVVEgyMDIzMDMzMDIzMzU1NDExMzY0NDM=',
-                        'currentPage': '1',
-                        'countPerPage': '10',
-                        'keyword': controller.text,
-                        'resultType': 'json',
-                      };
-                      http.post(
-                        //주소
-                          Uri.parse('https://business.juso.go.kr/addrlink/addrLinkApi.do'),
-                          //요청 본문
-                          body: params,
-                          headers: {
-                            'content-type' : 'application/x-www-form-urlencoded',
-                          }
-                      )
-                          .then((response){
-                        var json = jsonDecode(response.body);
-                        dev.log( json );
-                        setState(() {
-                          list = json['results']['juso'];
-                        });
-                      })
-                          .catchError((error){
-                        dev.log( error );
+
+                      setState(() {
+                        addList();
                       });
                     },
                     child: Text('검색')
@@ -73,38 +73,46 @@ class _LocationState extends State<Location> {
             ),
             Expanded(
               child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  padding: const EdgeInsets.all(5),
-                  itemCount: list.length,
-                  itemBuilder: (context, index){
-                    return Column(
-                      children: [
-                        TextButton(
-                          onPressed: (){},
+                scrollDirection: Axis.vertical,
+                padding: const EdgeInsets.all(5),
+                itemCount: addressList.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          print(addressList[index]);
+                        },
                           child: Container(
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.all(3),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color: Colors.black)
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black)
                             ),
                             height: 50,
-                            child: Text('${list[index]['roadAddr']}',
-                                style: TextStyle(color: Colors.black)),
+                            child: Text('${addressList[index]}',
+                              style: TextStyle(color: Colors.black)),
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        )
-                      ],
-                    );
-                  }
-              ),
+                      ),
+                    ],
+                  );
+                }
+              )
             ),
           ],
         ),
       ),
     );
+  }
+
+  void addList (){
+    addressList.add("서울특별시 성동구 성수동");
+    for(var i = 0; i < 10; i++) {
+      addressList.add("서울특별시 성동구 성수동 2 가 성동구 성수동 $i가");
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'setlocation.dart';
 import 'setFilter.dart';
+import 'mainPageMap.dart';
 import 'mainListBoard.dart';
 
 void main() {
@@ -14,7 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:MainPage(),
+      builder: (context, child) {
+        return MediaQuery(      // 폰트 사이즈 일정하게 하기
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          child: child!,
+        );
+      },
+      home: MainPage(),
     );
   }
 }
@@ -39,7 +46,7 @@ class MainPage extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(context,
                         MaterialPageRoute(
-                            builder: (context) => Location()));
+                            builder: (context) => LocationPage()));
                   },
                 ),
                 ElevatedButton(
@@ -51,6 +58,12 @@ class MainPage extends StatelessWidget {
                   },
                 ),
                 ElevatedButton(
+                  child: Text('메인페이지-지도'),
+                  onPressed: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => MainPageMap()));
+                ElevatedButton(    
                   child: Text('리스트'),
                   onPressed: (){
                     Navigator.push(context,
