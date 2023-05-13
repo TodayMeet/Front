@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'setlocation.dart';
 import 'setFilter.dart';
 import 'mainPageMap.dart';
+import 'mainListBoard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,6 +63,12 @@ class MainPage extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(
                             builder: (context) => MainPageMap()));
+                ElevatedButton(    
+                  child: Text('리스트'),
+                  onPressed: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => MainListBoard()));
                   },
                 ),
               ],
